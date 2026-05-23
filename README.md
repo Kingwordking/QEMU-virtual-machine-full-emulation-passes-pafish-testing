@@ -5,8 +5,6 @@
  >> ##### 内核修改.sh	通过	//	(rdtsc) forcing VM exit	测试
  >> ##### 准备工作.sh	安装所需虚拟化软件, 显卡直通准备工作
  >> ##### QEMU修改.sh	通过	//	Bochs detection	SystemBiosVersion	测试
- >> ##### R看我.md	//	README.md文档
- >> ##### T协议	//	LICENSE.txt许可证
  > ##### 补丁/
  >> ##### 内核补丁\[amd].patch	//	来自[RDTSC-KVM-Handler](https://github.com/WCharacter/RDTSC-KVM-Handler)	AMD补丁已过时且未测试
  >> ##### \[ACPI-SMBIOS]补丁.patch	//	参考资源[SMBIOS风扇](https://zhuanlan.zhihu.com/p/1931453712074780725)[ACPI风扇](https://zhuanlan.zhihu.com/p/1931837516459250831)[ACPI热区](https://zhuanlan.zhihu.com/p/1955416296675084161)
