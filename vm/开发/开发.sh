@@ -9,7 +9,7 @@ if [ $work_dir == 1 ]; then
 mkdir -p ~/公共/开发[QEMU]	~/公共/开发[QEMU]/diff	~/公共/开发[QEMU]/diff/a	~/公共/开发[QEMU]/diff/b
 
 tar -xf qemu-10.2.2.tar.xz -C ~/公共/开发[QEMU]/diff
-cd ~/公共/开发[QEMU]/diff/qemu-10.2.2;patch -p1 < ../../../../qemu-10.2.2.patch
+cd ~/公共/开发[QEMU]/diff/qemu-10.2.2;	patch -p1 < ../../../../qemu-10.2.2.patch
 
 rm -rf ~/公共/开发[QEMU]/QEMU开发
 cp -r ~/公共/开发[QEMU]/diff/qemu-10.2.2	~/公共/开发[QEMU]/QEMU开发
