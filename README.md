@@ -82,7 +82,7 @@ y安装编译QEMU依赖, sudo密码
 创建新的虚拟机	....不教
 
 打开虚拟系统管理器 首选项 启用XML编辑
-复制虚拟机<name><uuid>XML 到/VM/模板.xml
+复制虚拟机<uuid>XML 到/VM/模板.xml
 全选复制/VM/模板.xml  覆盖虚拟机XML
 
 sudo su
