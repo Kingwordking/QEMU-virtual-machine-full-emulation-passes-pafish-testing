@@ -13,6 +13,9 @@
 
 
 sources=1
+#Debian的源码镜像地址[配置sources = 3(否)不起效]
+DEB=https://mirrors.tuna.tsinghua.edu.cn
+
 username=user
 
 CPU=1
@@ -49,8 +52,8 @@ echo -e "\n安装虚拟机";sleep 1
 #配置sources
 if [ $sources == 1 ]; then
 echo "# Base repository
-deb http://mirrors.qlu.edu.cn/debian testing main contrib non-free
-deb-src http://mirrors.qlu.edu.cn/debian testing main contrib non-free" > /etc/apt/sources.list ;fi
+deb $DEB/debian testing main contrib non-free
+deb-src $DEB/debian testing main contrib non-free" > /etc/apt/sources.list ;fi
 
 #安装所需的虚拟化软件包：
 apt update

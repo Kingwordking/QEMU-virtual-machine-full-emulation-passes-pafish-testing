@@ -11,6 +11,8 @@ CPU=1
 
 username=user
 
+#Debian的源码镜像地址 
+DEB=https://mirrors.tuna.tsinghua.edu.cn
 
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
@@ -40,11 +42,11 @@ echo -e "安装内核\n";sleep 1
 #配置sources
 if [ $CPU == 1 ]; then
 echo "# Base repository
-deb http://mirrors.qlu.edu.cn/debian trixie main contrib non-free
-deb-src http://mirrors.qlu.edu.cn/debian trixie main contrib non-free" > /etc/apt/sources.list ;else
+deb $DEB/debian trixie main contrib non-free
+deb-src $DEB/debian trixie main contrib non-free" > /etc/apt/sources.list ;else
 echo "# Base repository
-deb http://mirrors.qlu.edu.cn/debian bullseye main contrib non-free
-deb-src http://mirrors.qlu.edu.cn/debian bullseye main contrib non-free" > /etc/apt/sources.list ;fi
+deb $DEB/debian bullseye main contrib non-free
+deb-src $DEB/debian bullseye main contrib non-free" > /etc/apt/sources.list ;fi
 
 #安装内核
 apt update
@@ -96,8 +98,8 @@ echo '内核已修改' > /home/$username/[LOG]内核修改[AMD][LOG];fi
 #设置开机自启CPU定频
 #配置sources
 echo "# Base repository
-deb http://mirrors.qlu.edu.cn/debian bookworm main contrib non-free
-deb-src http://mirrors.qlu.edu.cn/debian bookworm main contrib non-free" > /etc/apt/sources.list
+deb $DEB/debian bookworm main contrib non-free
+deb-src $DEB/debian bookworm main contrib non-free" > /etc/apt/sources.list
 apt update
 apt install cpufrequtils
 

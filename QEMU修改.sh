@@ -13,6 +13,8 @@
 
 
 sources=1
+#Debian的源码镜像地址[配置sources = 3(否)不起效]
+DEB='https:\/\/mirrors.tuna.tsinghua.edu.cn'		#因为使用sed命令需要 \ 转义
 
 QEMU_YL=1
 
@@ -39,14 +41,14 @@ else echo -e "补丁文件不存在   复制补丁qemu-10.2.2.patch到 /home/$us
 if test -e /home/$username/[ACPI-SMBIOS]补丁.patch;then echo -e "[ACPI-SMBIOS]补丁.patch[补丁文件存在]"
 else echo -e "补丁文件不存在   复制补丁[ACPI-SMBIOS]补丁.patch到 /home/$username/ \n";exit 1;fi
 
-if test -e /home/$username/qemu-10.2.2.tar.xz;then echo -e "QEMU源码压缩包存在\n"
-else echo -e "QEMU源码压缩包不存在   复制qemu-10.2.2.tar.xz源码压缩包到 /home/$username/ \n";exit 1;fi
+if test -e /home/$username/qemu-10.2.3.tar.xz;then echo -e "QEMU源码压缩包存在\n"
+else echo -e "QEMU源码压缩包不存在   复制qemu-10.2.3.tar.xz源码压缩包到 /home/$username/ \n";exit 1;fi
 
 
 #配置sources
 if [ $sources == 1 ]; then
-sudo sed -i 's/deb .*/deb http:\/\/mirrors.qlu.edu.cn\/debian testing main contrib non-free/g' /etc/apt/sources.list 
-sudo sed -i 's/deb-src .*/deb-src http:\/\/mirrors.qlu.edu.cn\/debian testing main contrib non-free/g' /etc/apt/sources.list 
+sudo sed -i "s/deb .*/deb $DEB\/debian testing main contrib non-free/g" /etc/apt/sources.list 
+sudo sed -i "s/deb-src .*/deb-src $DEB\/debian testing main contrib non-free/g" /etc/apt/sources.list 
 fi
 
 #安装编译QEMU依赖
@@ -57,10 +59,10 @@ fi
 
 
 #解压QEMU<原始的未修改>
-tar -xf /home/$username/qemu-10.2.2.tar.xz
+tar -xf /home/$username/qemu-10.2.3.tar.xz
 
 #QEMU修改
-cd /home/$username/qemu-10.2.2/
+cd /home/$username/qemu-10.2.3/
 patch -p1 < ../qemu-10.2.2.patch
 patch -p1 < ../[ACPI-SMBIOS]补丁.patch
 
