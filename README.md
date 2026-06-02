@@ -13,8 +13,7 @@
  > ##### 钩子脚本/	来自[single-gpu-passthrough](https://gitlab.com/risingprismtv/single-gpu-passthrough)	//	单GPU直通返回脚本
  > ##### VM/
  >> ##### 测试/
- >>> ##### 清理.sh	清理各种我不要的
- >>> ##### 修补钩子.sh	可选更改修补
+ >> ##### 问题/	//	可能遇到的问题
  >> ##### 开发/	//	修改QEMU源代码开发补丁
  >> ##### 模板.xml	仿真模板
  >> ##### 配置BIOS.sh	配置仿真模板
@@ -67,7 +66,7 @@ y安装, 直接按俩下回车
 - /补丁
   > 复制补丁qemu-10.2.2.patch  
   > 复制补丁\[ACPI-SMBIOS]补丁.patch  
-  > 复制qemu-10.2.3.tar.xz源码压缩包	//	[qemu源码](https://www.qemu.org/)   
+  > 复制qemu-11.0.1.tar.xz源码压缩包	//	[qemu源码](https://www.qemu.org/)   
   > 到 /home/你的用户名/  
 
 ```
@@ -115,14 +114,14 @@ sudo bash install_hooks.sh
 ![这是图片](补丁/截图/unknown_2026.05.22.png "win10 VM")
 
 - 为了爱
-  > 桑梓店镇		UID : 1081527516  已测试2026-05-31  
+  > 桑梓店镇		UID : 1081527516  已测试2026-06-3  
   > Debian13系统\[host]  
-  > Intel处理器  AMD显卡  win10虚拟机  
+  > Intel处理器\[i5-8400]  AMD显卡\[vega 56]  win10虚拟机\[LTSC-2019]  
   > 项目围绕Intel处理器  
 
 
-
-
+[可能遇到的问题](VM/问题/可能遇到的问题)  
+[更新日志](VM/问题/更新日志)
 
 
 
