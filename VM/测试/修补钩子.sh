@@ -11,7 +11,7 @@
 #是=1	否=3
 
 
-RDTSC=3
+RDTSC=1
 
 VMos=win10
 
