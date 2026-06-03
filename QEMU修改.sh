@@ -35,8 +35,8 @@ if [ $sources == 1 ]; then echo_sources="$GREEN是$RES" ;else echo_sources="$PIN
 if [ $QEMU_YL == 1 ]; then echo_QEMU_YL="$GREEN是$RES" ;else echo_QEMU_YL="$PINK否$RES" ;fi
 echo -e "\n	QEMU修改	是否配置软件包源 :$echo_sources\n	当前用户名字 :$YELLOW$username$RES   安装编译依赖:$echo_QEMU_YL\n"
 
-if test -e /home/$username/qemu-10.2.2.patch;then echo -e "qemu-10.2.2.patch[补丁文件存在]"
-else echo -e "补丁文件不存在   复制补丁qemu-10.2.2.patch到 /home/$username/ \n";exit 1;fi
+if test -e /home/$username/qemu-11.0.1.patch;then echo -e "qemu-11.0.1.patch[补丁文件存在]"
+else echo -e "补丁文件不存在   复制补丁qemu-11.0.1.patch到 /home/$username/ \n";exit 1;fi
 
 if test -e /home/$username/[ACPI-SMBIOS]补丁.patch;then echo -e "[ACPI-SMBIOS]补丁.patch[补丁文件存在]"
 else echo -e "补丁文件不存在   复制补丁[ACPI-SMBIOS]补丁.patch到 /home/$username/ \n";exit 1;fi
@@ -64,7 +64,7 @@ tar -xf /home/$username/qemu-11.0.1.tar.xz
 
 #QEMU修改
 cd /home/$username/qemu-11.0.1/
-patch -p1 < ../qemu-10.2.2.patch
+patch -p1 < ../qemu-11.0.1.patch
 patch -p1 < ../[ACPI-SMBIOS]补丁.patch
 
 #安装编译

@@ -7,9 +7,9 @@
  >> ##### QEMU修改.sh	通过	//	Bochs detection	SystemBiosVersion	测试
  > ##### 补丁/
  >> ##### 内核补丁\[amd].patch	//	来自[RDTSC-KVM-Handler](https://github.com/WCharacter/RDTSC-KVM-Handler)	AMD补丁已过时且未测试
+ >> ##### 内核补丁\[Intel].patch	//	来自[RDTSC-KVM-Handler-v2](https://github.com/YungBinary/RDTSC-KVM-Handler-v2)
  >> ##### \[ACPI-SMBIOS]补丁.patch	//	参考资源[SMBIOS风扇](https://zhuanlan.zhihu.com/p/1931453712074780725)[ACPI风扇](https://zhuanlan.zhihu.com/p/1931837516459250831)[ACPI热区](https://zhuanlan.zhihu.com/p/1955416296675084161)
- >> ##### kernel-patch-6.8.0-65.patch	//	来自[RDTSC-KVM-Handler-v2](https://github.com/YungBinary/RDTSC-KVM-Handler-v2)
- >> ##### qemu-10.2.2.patch	//	来自[qemu-anti-detection](https://github.com/zhaodice/qemu-anti-detection)
+ >> ##### qemu-11.0.1.patch	//	来自[qemu-anti-detection](https://github.com/zhaodice/qemu-anti-detection)
  > ##### 钩子脚本/	来自[single-gpu-passthrough](https://gitlab.com/risingprismtv/single-gpu-passthrough)	//	单GPU直通返回脚本
  > ##### VM/
  >> ##### 测试/
@@ -28,7 +28,7 @@
 **更改username=??**
 
 - /补丁
-  > Intel处理器复制kernel-patch-6.8.0-65.patch  
+  > Intel处理器复制内核补丁\[Intel].patch  
   > AMD处理器复制内核补丁\[amd].patch  
   > 到 /home/你的用户名/  
 
@@ -40,7 +40,7 @@ y安装, y安装, 自定义配置或直接方向键右<Exit>回车<Yes>回车
 等待完成!!内核修改需要时间非常多!
 
 重启
-验证内核版本是否为 6.12.86
+验证内核版本是否为 7.0.10
 uname -r
 ```
 
@@ -64,7 +64,7 @@ y安装, 直接按俩下回车
 **更改username=??**
 
 - /补丁
-  > 复制补丁qemu-10.2.2.patch  
+  > 复制补丁qemu-11.0.1.patch  
   > 复制补丁\[ACPI-SMBIOS]补丁.patch  
   > 复制qemu-11.0.1.tar.xz源码压缩包	//	[qemu源码](https://www.qemu.org/)   
   > 到 /home/你的用户名/  
@@ -114,8 +114,8 @@ sudo bash install_hooks.sh
 ![这是图片](补丁/截图/unknown_2026.05.22.png "win10 VM")
 
 - 为了爱
-  > 桑梓店镇		UID : 1081527516  已测试2026-06-3  
-  > Debian13系统\[host]  
+  > 桑梓店镇		UID : 1081527516  已完整测试2026-06-3  
+  > Debian13系统\[13.5.0]  
   > Intel处理器\[i5-8400]  AMD显卡\[vega 56]  win10虚拟机\[LTSC-2019]  
   > 项目围绕Intel处理器  
 
