@@ -1,3 +1,6 @@
 sudo qemu-img resize ??/vol.qcow2 ??G
 更改VM磁盘大小
 
+sudo virsh define ？？/VM/模板.xml
+更快的创建虚拟机不用一步步创建
+
