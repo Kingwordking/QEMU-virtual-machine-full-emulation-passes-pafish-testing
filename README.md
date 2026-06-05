@@ -12,7 +12,6 @@
  >> ##### qemu-11.0.1.patch	//	来自[qemu-anti-detection](https://github.com/zhaodice/qemu-anti-detection)
  > ##### 钩子脚本/	来自[single-gpu-passthrough](https://gitlab.com/risingprismtv/single-gpu-passthrough)	//	单GPU直通返回脚本
  > ##### VM/
- >> ##### 测试/
  >> ##### 问题/	//	可能遇到的问题
  >> ##### 开发/	//	修改QEMU源代码开发补丁
  >> ##### 模板.xml	仿真模板
@@ -114,7 +113,7 @@ sudo bash install_hooks.sh
 ![这是图片](补丁/截图/unknown_2026.05.22.png "win10 VM")
 
 - 为了爱
-  > 桑梓店镇		UID : 1081527516  已完整测试2026-06-3  
+  > 桑梓店镇		UID : 1081527516  已完整测试2026-06-05  
   > Debian13系统\[13.5.0]  
   > Intel处理器\[i5-8400]  AMD显卡\[vega 56]  win10虚拟机\[LTSC-2019]  
   > 项目围绕Intel处理器  
