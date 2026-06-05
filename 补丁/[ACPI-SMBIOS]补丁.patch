@@ -1,7 +1,7 @@
 diff -uprN "a/hw/acpi/aml-build.c" "b/hw/acpi/aml-build.c"
---- "a/hw/acpi/aml-build.c"	2026-05-23 22:43:51.568503365 +0800
-+++ "b/hw/acpi/aml-build.c"	2026-05-23 22:43:51.568503365 +0800
-@@ -1150,6 +1150,28 @@ Aml *aml_device(const char *name_format,
+--- "a/hw/acpi/aml-build.c"	2026-06-05 14:37:06.099241010 +0800
++++ "b/hw/acpi/aml-build.c"	2026-06-05 14:37:06.100248185 +0800
+@@ -1153,6 +1153,28 @@ Aml *aml_device(const char *name_format,
      return var;
  }
  
@@ -30,7 +30,7 @@ diff -uprN "a/hw/acpi/aml-build.c" "b/hw/acpi/aml-build.c"
  /* ACPI 1.0b: 6.4.1 ASL Macros for Resource Descriptors */
  Aml *aml_resource_template(void)
  {
-@@ -2263,7 +2285,7 @@ void build_fadt(GArray *tbl, BIOSLinker
+@@ -2273,7 +2295,7 @@ void build_fadt(GArray *tbl, BIOSLinker
      /* ACPI1.0: INT_MODEL, ACPI2.0+: Reserved */
      build_append_int_noprefix(tbl, f->int_model /* Multiple APIC */, 1);
      /* Preferred_PM_Profile */
@@ -40,9 +40,9 @@ diff -uprN "a/hw/acpi/aml-build.c" "b/hw/acpi/aml-build.c"
      build_append_int_noprefix(tbl, f->smi_cmd, 4); /* SMI_CMD */
      build_append_int_noprefix(tbl, f->acpi_enable_cmd, 1); /* ACPI_ENABLE */
 diff -uprN "a/hw/i386/acpi-build.c" "b/hw/i386/acpi-build.c"
---- "a/hw/i386/acpi-build.c"	2026-05-23 22:43:51.564503365 +0800
-+++ "b/hw/i386/acpi-build.c"	2026-05-23 22:43:51.564503365 +0800
-@@ -845,6 +845,59 @@ static void build_acpi0017(Aml *table)
+--- "a/hw/i386/acpi-build.c"	2026-06-05 14:37:06.095819023 +0800
++++ "b/hw/i386/acpi-build.c"	2026-06-05 14:37:06.096924323 +0800
+@@ -846,6 +846,59 @@ static void build_acpi0017(Aml *table)
      aml_append(table, scope);
  }
  
@@ -102,7 +102,7 @@ diff -uprN "a/hw/i386/acpi-build.c" "b/hw/i386/acpi-build.c"
  static void
  build_dsdt(GArray *table_data, BIOSLinker *linker,
             AcpiPmInfo *pm, AcpiMiscInfo *misc,
-@@ -938,6 +991,9 @@ build_dsdt(GArray *table_data, BIOSLinke
+@@ -939,6 +992,9 @@ build_dsdt(GArray *table_data, BIOSLinke
          build_q35_pci0_int(dsdt);
      }
  
@@ -112,9 +112,31 @@ diff -uprN "a/hw/i386/acpi-build.c" "b/hw/i386/acpi-build.c"
      if (misc->has_hpet) {
          build_hpet_aml(dsdt);
      }
+@@ -1630,10 +1686,10 @@ build_dmar_q35(GArray *table_data, BIOSL
+  * Helpful to speedup Windows guests and ignored by others.
+  */
+ static void
+-build_waet(GArray *table_data, BIOSLinker *linker, const char *oem_id,
++build_wsmt(GArray *table_data, BIOSLinker *linker, const char *oem_id,
+            const char *oem_table_id)
+ {
+-    AcpiTable table = { .sig = "WAET", .rev = 1, .oem_id = oem_id,
++    AcpiTable table = { .sig = "WSMT", .rev = 1, .oem_id = oem_id,
+                         .oem_table_id = oem_table_id };
+ 
+     acpi_table_begin(&table, table_data);
+@@ -2076,7 +2132,7 @@ void acpi_build(AcpiBuildTables *tables,
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    build_waet(tables_blob, tables->linker, x86ms->oem_id, x86ms->oem_table_id);
++    build_wsmt(tables_blob, tables->linker, x86ms->oem_id, x86ms->oem_table_id);
+ 
+     /* Add tables supplied by user (if any) */
+     for (u = acpi_table_first(); u; u = acpi_table_next(u)) {
 diff -uprN "a/hw/i386/fw_cfg.c" "b/hw/i386/fw_cfg.c"
---- "a/hw/i386/fw_cfg.c"	2026-06-03 21:13:57.920860240 +0800
-+++ "b/hw/i386/fw_cfg.c"	2026-06-03 21:13:57.921835303 +0800
+--- "a/hw/i386/fw_cfg.c"	2026-06-05 14:37:06.112685983 +0800
++++ "b/hw/i386/fw_cfg.c"	2026-06-05 14:37:06.113929067 +0800
 @@ -216,7 +216,7 @@ void fw_cfg_build_feature_control(Machin
  void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
  {
@@ -125,8 +147,8 @@ diff -uprN "a/hw/i386/fw_cfg.c" "b/hw/i386/fw_cfg.c"
  
      /*
 diff -uprN "a/hw/smbios/smbios.c" "b/hw/smbios/smbios.c"
---- "a/hw/smbios/smbios.c"	2026-05-23 22:43:51.576503364 +0800
-+++ "b/hw/smbios/smbios.c"	2026-05-23 22:43:51.576503364 +0800
+--- "a/hw/smbios/smbios.c"	2026-06-05 14:37:06.105995688 +0800
++++ "b/hw/smbios/smbios.c"	2026-06-05 14:37:06.107013418 +0800
 @@ -559,6 +559,7 @@ bool smbios_skip_table(uint8_t type, boo
  #define T16_BASE 0x1000
  #define T17_BASE 0x1100
@@ -168,8 +190,8 @@ diff -uprN "a/hw/smbios/smbios.c" "b/hw/smbios/smbios.c"
       * make sure 16 bit handle numbers in the headers of tables 19
       * and 32 do not overlap.
 diff -uprN "a/include/hw/acpi/aml-build.h" "b/include/hw/acpi/aml-build.h"
---- "a/include/hw/acpi/aml-build.h"	2026-05-23 22:43:51.572503364 +0800
-+++ "b/include/hw/acpi/aml-build.h"	2026-05-23 22:43:51.572503364 +0800
+--- "a/include/hw/acpi/aml-build.h"	2026-06-05 14:37:06.102554367 +0800
++++ "b/include/hw/acpi/aml-build.h"	2026-06-05 14:37:06.103620812 +0800
 @@ -388,6 +388,9 @@ Aml *aml_error_device(void);
  /* Block AML object primitives */
  Aml *aml_scope(const char *name_format, ...) G_GNUC_PRINTF(1, 2);
@@ -181,8 +203,8 @@ diff -uprN "a/include/hw/acpi/aml-build.h" "b/include/hw/acpi/aml-build.h"
  Aml *aml_if(Aml *predicate);
  Aml *aml_else(void);
 diff -uprN "a/include/hw/firmware/smbios.h" "b/include/hw/firmware/smbios.h"
---- "a/include/hw/firmware/smbios.h"	2026-05-23 22:43:51.580503364 +0800
-+++ "b/include/hw/firmware/smbios.h"	2026-05-23 22:43:51.580503364 +0800
+--- "a/include/hw/firmware/smbios.h"	2026-06-05 14:37:06.109349563 +0800
++++ "b/include/hw/firmware/smbios.h"	2026-06-05 14:37:06.110325149 +0800
 @@ -303,6 +303,17 @@ struct smbios_type_19 {
      uint64_t extended_ending_address;
  } QEMU_PACKED;
