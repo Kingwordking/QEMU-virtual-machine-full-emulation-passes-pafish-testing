@@ -45,7 +45,7 @@
     </chassis>
   </sysinfo>
   <os firmware="efi">
-    <type arch="x86_64" machine="pc-q35-10.2">hvm</type>
+    <type arch="x86_64" machine="q35">hvm</type>
     <firmware>
       <feature enabled="no" name="enrolled-keys"/>
       <feature enabled="yes" name="secure-boot"/>
@@ -127,6 +127,11 @@
     <controller type="sata" index="0">
       <address type="pci" domain="0x0000" bus="0x00" slot="0x1f" function="0x2"/>
     </controller>
+    <interface type="network">
+      <source network="default"/>
+      <model type="e1000e"/>
+      <link state="down"/>
+    </interface>
     <input type="mouse" bus="ps2"/>
     <input type="keyboard" bus="ps2"/>
     <audio id="1" type="none"/>
