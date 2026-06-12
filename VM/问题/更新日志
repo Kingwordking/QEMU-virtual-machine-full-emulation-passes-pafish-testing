@@ -28,3 +28,20 @@ ACPI.v0.06.7z		//	2026年 06月 05日
 评价 ： 小修更多是补全， 对全仿真没什么帮助
 
 
+未定	//	2026年 06月 12日
+内核修改.sh		#更换计时器	kernel-patch-6.8.0-65.patch >> 内核补丁[Intel].patch
+
+配置BIOS.sh
+/*
+	<disk type="file" device="disk">"/>
+	+ <source file="/var/lib/libvirt/images/win10.qcow2"/>
+	<target dev="sdb" bus="sata"/>
+	<serial>??</serial>
+	<product>??</product>
+	+ </disk>
+*/
+#序列号颜色	YELLOW >> RED
+
+
+
+
