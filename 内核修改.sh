@@ -89,8 +89,8 @@ cpu_MHz=$(echo $cpu_MHz | sed -e 's/\.0.*//g')
 #更换计时器<u64 fake_diff =  diff / 16;		16是时间戳实际差异的分差,你可以增加和减少>
 if [ $CPU == 1 ]; then
 if [ $cpu_MHz -ge 4200 ];then 
-sed -i 's/u64 fake_diff =  diff \/.*/u64 fake_diff =  diff \/ 20;/g' /home/$username/kernel-patch-6.8.0-65.patch
-else	sed -i 's/u64 fake_diff =  diff \/.*/u64 fake_diff =  diff \/ 16;/g' /home/$username/kernel-patch-6.8.0-65.patch
+sed -i 's/u64 fake_diff =  diff \/.*/u64 fake_diff =  diff \/ 20;/g' /home/$username/内核补丁[Intel].patch
+else	sed -i 's/u64 fake_diff =  diff \/.*/u64 fake_diff =  diff \/ 16;/g' /home/$username/内核补丁[Intel].patch
 fi fi
 
 if [ $CPU == 3 ]; then
