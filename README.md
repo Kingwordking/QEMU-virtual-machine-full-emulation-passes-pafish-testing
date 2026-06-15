@@ -32,7 +32,7 @@
   > 到 /home/你的用户名/  
 
 ```
-sudo su
+sudo su	#root用户执行
 bash /内核修改.sh
 
 y安装, y安装, 自定义配置或直接方向键右<Exit>回车<Yes>回车
@@ -51,7 +51,7 @@ uname -r
 **更改GPU=??**  
 
 ```
-sudo su
+sudo su	#root用户执行
 bash /准备工作.sh
 
 y安装, 直接按俩下回车
@@ -83,8 +83,7 @@ y安装编译QEMU依赖, sudo密码
 复制虚拟机<uuid>XML 到/VM/模板.xml
 全选复制/VM/模板.xml  覆盖虚拟机XML
 
-sudo su
-bash /配置BIOS.sh
+sudo bash /配置BIOS.sh
 自定义或复制主机  复制修改到虚拟机XML
 ```
 
@@ -113,7 +112,7 @@ sudo bash install_hooks.sh
 ![这是图片](补丁/截图/unknown_2026.05.22.png "win10 VM")
 
 - 为了爱
-  > 桑梓店镇		UID : 1081527516  已完整测试2026-06-05  
+  > 桑梓店镇		UID : 1081527516  已完整测试2026-06-12  
   > Debian13系统\[13.5.0]  
   > Intel处理器\[i5-8400]  AMD显卡\[vega 56]  win10虚拟机\[LTSC-2019]  
   > 项目围绕Intel处理器  
